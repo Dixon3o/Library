@@ -16,17 +16,15 @@ function addBookToLibrary(title, author, pages, yearPublished, read){
 
     const book = new Book(title, author, pages, yearPublished, read);
     myLibrary.push(book);
-
+    
 }
-
-addBookToLibrary("Dune", "Frank Herbert", 650, 1955, true);
-addBookToLibrary("Harry Potter", "JKR", 250, 1991, true);
 
 const cdiv = document.querySelector(".container");
 
 function displayBooks(){
     cdiv.replaceChildren();
     myLibrary.forEach(book => {
+
     let div = document.createElement("div");
     div.classList.add("book");
 
@@ -50,6 +48,27 @@ function displayBooks(){
     div.append(title,author,pages,year,read);
     cdiv.appendChild(div);
     });
+    
 }
+
+function extractingTheForm(){
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
+    let year = document.querySelector("#year").value;
+    let read = document.querySelector("#read").value;
+    read = read === "yes";
+    addBookToLibrary(title, author, pages, year, read);
+    displayBooks();
+    document.querySelector('#my-dialog').close();
+    document.querySelector("#book-form").reset();
+}
+
+const form = document.querySelector("#book-form");
+form.addEventListener("submit", (e) => {
+    //this is preventing a from to sends its values to the server by default
+    e.preventDefault();
+    extractingTheForm();
+});
 
 displayBooks();

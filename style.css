@@ -1,3 +1,4 @@
+
 .container{
     display: flex;
     justify-content: center;
@@ -5,11 +6,16 @@
     flex-wrap: wrap;
     gap: 10px;
 }
-
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .book{
     border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .book:hover{
@@ -19,4 +25,16 @@
 }
 p{
     font-size: 17.5px;
+}
+.placeForForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#my-dialog{
+    position: fixed;
+    margin-top: 330px;
+}
+#my-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
 }

@@ -7,9 +7,39 @@
     <title>Library</title>
 </head>
 <body>
+    <h1>My Library</h1>
     <div class="container">
+        
+    </div>
+    <div class="placeForForm">
+        <button command="show-modal" commandfor="my-dialog">Add new book</button>
 
+        <dialog id="my-dialog">
+            <form id="book-form" action="" method="get">
+                <Label>Title: </Label>
+                <input type="text" id="title" required>
+                <br/>
+                <Label>Author: </Label>
+                <input type="text" id="author" required>
+                <br/>
+                <Label>Pages: </Label>
+                <input type="text" id="pages" required>
+                <br/>
+                <Label>Year published: </Label>
+                <input type="text" id="year" required>
+                <br/>
+                <Label>Have you read it? </Label>
+                <select id="read" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <br/>
+            </form>
+            <button commandFor="my-dialog" command="close">Close</button>
+            <button type="submit" form="book-form">Submit</button>
+        </dialog>
     </div>
     <script src="script.js"></script>
+    
 </body>
 </html>
