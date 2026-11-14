@@ -50,7 +50,12 @@ function displayBooks(){
     deleteBook.classList.add("deleteBtn");
     deleteBook.dataset.id = book.id;
 
-    div.append(title,author,pages,year,read, deleteBook);
+    const changeRead = document.createElement("button");
+    changeRead.textContent = "Change read status";
+    changeRead.classList.add("statusBtn");
+    changeRead.dataset.id = book.id;
+
+    div.append(title,author,pages,year,read, deleteBook, changeRead);
     cdiv.appendChild(div);
     });
     
@@ -87,6 +92,23 @@ cdiv.addEventListener('click', (e)=> {
         displayBooks();
     }
     
+});
+
+Book.prototype.statusChange = function(){
+    if(this.read == true){
+        this.read = false;
+    }else{
+        this.read = true;
+    }
+}
+
+cdiv.addEventListener('click', (e) =>{
+    if(e.target.classList.contains("statusBtn")){
+        const id = e.target.dataset.id;
+        const book = myLibrary.find(book => book.id === id);
+        book.statusChange();
+        displayBooks();
+    }
 });
 
 displayBooks();
