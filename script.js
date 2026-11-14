@@ -45,7 +45,12 @@ function displayBooks(){
     const read = document.createElement("p");
     read.textContent = book.read ? "Has been read" : "Yet to read";
 
-    div.append(title,author,pages,year,read);
+    const deleteBook = document.createElement("button");
+    deleteBook.textContent = "Delete";
+    deleteBook.classList.add("deleteBtn");
+    deleteBook.dataset.id = book.id;
+
+    div.append(title,author,pages,year,read, deleteBook);
     cdiv.appendChild(div);
     });
     
@@ -66,9 +71,22 @@ function extractingTheForm(){
 
 const form = document.querySelector("#book-form");
 form.addEventListener("submit", (e) => {
-    //this is preventing a from to sends its values to the server by default
+    //this is preventing a form to sends its values to the server by default
     e.preventDefault();
     extractingTheForm();
+});
+
+
+cdiv.addEventListener('click', (e)=> {
+    if(e.target.classList.contains("deleteBtn")){
+        const id = e.target.dataset.id;
+        const index = myLibrary.findIndex(book => book.id === id);
+        if(index != -1){
+            myLibrary.splice(index, 1);
+        }
+        displayBooks();
+    }
+    
 });
 
 displayBooks();
