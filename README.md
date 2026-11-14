@@ -22,11 +22,11 @@ A simple library app built with vanilla HTML, CSS and JavaScript. You can add bo
 # How to clone it
 1. Clone the repository:
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/Dixon3o/Library.git
    ```
 2. Open the project folder:
    ```bash
-   cd <your-project-folder>
+   cd Library
    ```
 3. Open `index.html` in your browser (or use an extension such as Live Server in VS Code).
 
